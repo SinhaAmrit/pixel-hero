@@ -1,3 +1,14 @@
+/**
+ * The function checks if the browser supports the CanvasRenderingContext2D object and if the user is
+ * on a mobile or Android device, and displays an alert message if either condition is true.
+ */
+function checkSupport() {
+    if (!window.CanvasRenderingContext2D || /Mobi|Android/i.test(navigator.userAgent)) {
+        alert("Please update your browser or open this site on a laptop/desktop for full functionality.");
+    }
+}
+
+checkSupport();
 /* The `kaboom()` function is initializing the Kaboom game engine and setting the width and height of
 the game window to 1280 pixels and 720 pixels, respectively. */
 kaboom({
