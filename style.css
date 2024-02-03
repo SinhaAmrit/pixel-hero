@@ -21,6 +21,6 @@ canvas {
 }
 
 #fallback-content > div {
-  background-color: #dadada;
+  background-color: yellow;
   color: #252525;
 }
