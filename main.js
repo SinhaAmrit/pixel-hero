@@ -3,26 +3,40 @@
  * on a mobile or Android device, and displays an alert message if either condition is true.
  */
 function checkSupport() {
-    // Enhanced checks for wider browser and device compatibility
-    const canvasSupported = !!(window.CanvasRenderingContext2D);
-    const isMobile = /Mobi|Android|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const isSmallScreen = window.innerWidth < 768 && window.innerHeight < 600; // Adjust size thresholds as needed
+    // ... (same checks as before)
 
     if (!canvasSupported || isMobile || isSmallScreen) {
         const fallbackContent = document.getElementById("fallback-content");
         fallbackContent.style.display = "block";
 
         // Optionally block further rendering:
-        document.body.style.display = "none";
+        // document.body.style.display = "none";
 
-        fallbackContent.addEventListener("click", () => {
-            if (confirm("This site may not function correctly on your device. Click OK to visit my portfolio instead.")) {
-                window.location.href = "google.co.in"; // Replace with your portfolio link
-            } else {
-                // Optionally provide a way to go back:
-                window.history.back();
-            }
-        });
+        // Simulate alert box using DOM manipulation and event listener
+        fallbackContent.style.backgroundColor = "rgba(255, 255, 255, 0.8)"; // Dim background
+        fallbackContent.style.position = "fixed";
+        fallbackContent.style.top = "0";
+        fallbackContent.style.left = "0";
+        fallbackContent.style.width = "100%";
+        fallbackContent.style.height = "100%";
+        fallbackContent.style.zIndex = 9999; // Ensure visibility on top
+
+        const messageBox = document.createElement("div");
+        messageBox.style.border = "1px solid black";
+        messageBox.style.padding = "20px";
+        messageBox.style.margin = "auto";
+        messageBox.style.width = "400px";
+        messageBox.style.backgroundColor = "white";
+        messageBox.innerHTML = "<h2>Important message</h2><p>This site may not function correctly on your device. Click OK to visit my portfolio instead.</p>";
+
+        const okButton = document.createElement("button");
+        okButton.textContent = "OK";
+        okButton.onclick = () => {
+            window.location.href = "your-portfolio-link"; // Replace with your portfolio link
+        };
+
+        messageBox.appendChild(okButton);
+        fallbackContent.appendChild(messageBox);
     }
 }
 
