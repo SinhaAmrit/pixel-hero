@@ -11,11 +11,6 @@ function checkSupport() {
     if (!canvasSupported || isMobile || isSmallScreen) {
         const fallbackContent = document.getElementById("fallback-content");
         fallbackContent.style.display = "block";
-        fallbackContent.addEventListener("click", () => {
-            if (confirm("This site may not function correctly on your device. Click OK to visit my portfolio instead.")) {
-                window.location.href = "your-portfolio-link"; // Replace with your portfolio link
-            }
-        });
     }
 }
 
