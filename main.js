@@ -13,14 +13,14 @@ function checkSupport() {
         fallbackContent.style.display = "block";
 
         // Optionally block further rendering:
-        // document.body.style.display = "none";
+        document.body.style.display = "none";
 
         fallbackContent.addEventListener("click", () => {
             if (confirm("This site may not function correctly on your device. Click OK to visit my portfolio instead.")) {
                 window.location.href = "your-portfolio-link"; // Replace with your portfolio link
             } else {
                 // Optionally provide a way to go back:
-                // window.history.back();
+                window.history.back();
             }
         });
     }
