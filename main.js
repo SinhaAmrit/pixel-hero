@@ -9,11 +9,25 @@ function checkSupport() {
     const isSmallScreen = window.innerWidth < 768 && window.innerHeight < 600; // Adjust size thresholds as needed
 
     if (!canvasSupported || isMobile || isSmallScreen) {
-        document.getElementById("unsupported-message").style.display = "block";
+        const fallbackContent = document.getElementById("fallback-content");
+        fallbackContent.style.display = "block";
+
+        // Optionally block further rendering:
+        document.body.style.display = "none";
+
+        fallbackContent.addEventListener("click", () => {
+            if (confirm("This site may not function correctly on your device. Click OK to visit my portfolio instead.")) {
+                window.location.href = "google.co.in"; // Replace with your portfolio link
+            } else {
+                // Optionally provide a way to go back:
+                window.history.back();
+            }
+        });
     }
 }
 
 checkSupport();
+
 
 /* The `kaboom()` function is initializing the Kaboom game engine and setting the width and height of
 the game window to 1280 pixels and 720 pixels, respectively. */
