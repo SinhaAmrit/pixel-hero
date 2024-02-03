@@ -3,12 +3,18 @@
  * on a mobile or Android device, and displays an alert message if either condition is true.
  */
 function checkSupport() {
-    if (!window.CanvasRenderingContext2D || /Mobi|Android/i.test(navigator.userAgent)) {
-        alert("Please update your browser or open this site on a laptop/desktop for full functionality.");
+    // Enhanced checks for wider browser and device compatibility
+    const canvasSupported = !!(window.CanvasRenderingContext2D);
+    const isMobile = /Mobi|Android|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isSmallScreen = window.innerWidth < 768 && window.innerHeight < 600; // Adjust size thresholds as needed
+
+    if (!canvasSupported || isMobile || isSmallScreen) {
+        document.getElementById("unsupported-message").style.display = "block";
     }
 }
 
 checkSupport();
+
 /* The `kaboom()` function is initializing the Kaboom game engine and setting the width and height of
 the game window to 1280 pixels and 720 pixels, respectively. */
 kaboom({
